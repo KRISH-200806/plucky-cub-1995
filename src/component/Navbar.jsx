@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 function Navbar() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
       <section>
@@ -27,11 +32,11 @@ function Navbar() {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <div className="search-bar m-auto">
+            <div className="" id="navbarNav">
+              <div className="m-auto navbarSeach">
                 <input
                   type="text"
-                  className="form-control"
+                  className="ps-3 pt-2 pb-2 pe-5 w-100"
                   placeholder="Search"
                   name="q"
                 />
@@ -39,25 +44,40 @@ function Navbar() {
             </div>
             <ul className="navbar-nav ml-auto align-items-center">
               <li className="nav-item">
-                <Link className="nav-link" to="/profile">
-                  <i className="bi bi-person"></i>
+                <Link className="nav-link" to="/auth">
+                  <i className="bi bi-person nav-menu-icon"></i>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/favorites">
-                  <i className="bi bi-heart"></i>
+                  <i className="bi bi-heart nav-menu-icon"></i>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">
-                  <i className="bi bi-cart3"></i>
+                 
+                    <i
+                      className="bi bi-cart3 nav-icon"
+                      onClick={handleShow}
+                    ></i>
+                
+
+                  <Offcanvas show={show} onHide={handleClose}>
+                    <Offcanvas.Header closeButton>
+                      <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                      Some text as placeholder. In real life you can have the
+                      elements you have chosen. Like, text, images, lists, etc.
+                    </Offcanvas.Body>
+                  </Offcanvas>
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-          </section>
-     </div>     
-    );
-}        
-export default Navbar;      
+      </section>
+    </div>
+  );
+}
+export default Navbar;

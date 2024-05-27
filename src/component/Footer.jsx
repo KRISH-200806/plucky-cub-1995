@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="ms-5">
                 SHOP NOW, PAY LATER WITH <b>Klarna.</b>
               </span>
-              <a href="#" className="me-3 text-dark">
+              <a href=" " className="me-3 text-dark">
                 Learn more
               </a>
             </div>
@@ -32,19 +32,19 @@ const Footer = () => {
               <b>Sign Up Now</b>
             </button>
             <div>
-              <a href="#" className="text-white mx-2">
+              <a href=" " className="text-white mx-2">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a href="#" className="text-white mx-2">
+              <a href=" " className="text-white mx-2">
                 <i className="bi bi-instagram"></i>
               </a>
-              <a href="#" className="text-white mx-2">
+              <a href=" " className="text-white mx-2">
                 <i className="bi bi-youtube"></i>
               </a>
-              <a href="#" className="text-white mx-2">
+              <a href=" " className="text-white mx-2">
                 <i className="bi bi-twitter"></i>
               </a>
-              <a href="#" className="text-white mx-2">
+              <a href=" " className="text-white mx-2">
                 <i className="bi bi-pinterest"></i>
               </a>
             </div>
@@ -127,13 +127,11 @@ const Footer = () => {
             </ul>
           </div>
           <div className="row ">
-          <div className="col-2">
-            <p className="m-0"> © Brookstone 2024.</p>
+            <div className="col-2">
+              <p className="m-0"> © Brookstone 2024.</p>
+            </div>
           </div>
         </div>
-        </div>
-
-        
       </div>
     </footer>
   );

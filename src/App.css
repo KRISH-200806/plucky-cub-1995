@@ -35,7 +35,35 @@
   width: 160px;
   height: 160px;
 }
-
+.navbarSeach
+{
+    width: 616px;
+    height: 38px;
+}
+.navbarSeach input
+{
+    width: 616px;
+    height: 38px;
+    border: 1px solid #cccccc;
+    outline: none;
+    color: #cccccc;
+    font-family: inherit;
+}
+.nav-menu-icon
+{
+  font-size: 24px;
+}
+.nav-icon
+{
+  padding-right: 25px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  background-color: #34835E;
+  border-radius: 5px;
+  font-size: 24px;
+  color: #FFF;
+}
 /* ......... footer>>>>>>>> */
 
 
@@ -103,7 +131,7 @@ footer .btn-light {
   color: black;
   padding: 5px 100px;
   border-radius: 20%; /* Fully rounded corners */
-  width: fit-content;
+
 }
 
 .custom-link {
