@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white mt-5 p-5 text-center footer-custom">
+    <footer className="text-white mt-5 p-5 text-center footer-custom">
       <div className="container">
         <div className="row justify-content-center mb-5">
           <div className="col-md-6">
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row ">
           <div className="col-md-4 mb-4 mb-md-0 text-start">
             <h5>Stay in the loop</h5>
             <p>

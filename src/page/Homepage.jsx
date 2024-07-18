@@ -3,18 +3,19 @@ import { Link } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 
 function Homepage() {
+  
   return (
     <div>
       <section>
         <div className="container">
-          <div className="row">
-            <div className="col-7 desk-image">
+          <div className="row desck-home">
+            <div className="col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7 col-7 desk-image">
               <img src="desck-1.avif" alt="" className="img-fluid" />
             </div>
-            <div className="col-5">
+            <div className="col-sm-12 mt-sm-3 col-md-12 col-lg-5 col-xl-5 mt-xl-0 col-xxl-5  col-5">
               <img src="desck-2.avif" alt="" className="img-fluid" />
               <div className="row">
-                <div className="col-6 pt-4">
+                <div className="col-6  pt-4">
                   <img src="desck-3.avif" alt="" className="img-fluid" />
                 </div>
                 <div className="col-6 pt-4">
@@ -47,76 +48,76 @@ function Homepage() {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-1.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Audio</p>
             </div>
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-2.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Massage Chairs</p>
             </div>
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-3.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Foot & Leg Massage</p>
             </div>
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-4.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Neck & Back Massage</p>
             </div>
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-5.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Wine & Bar</p>
             </div>
-            <div className="col-2 home-cate text-center">
-              <Link to="">
+            <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center mt-sm-5">
+              <Link to={"/card"}>
                 <img src="home-cate-6.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Lighting</p>
             </div>
           </div>
           <div className="row mt-5">
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-3 col-md-4 mt-sm-2 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center ">
+              <Link to={"/card"}>
                 <img src="home-cate-7.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Pillows</p>
             </div>
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-3 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center ">
+              <Link to={"/card"}>
                 <img src="home-cate-8.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Skincare</p>
             </div>
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center ">
+              <Link to={"/card"}>
                 <img src="home-cate-9.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">LED Light Therapy</p>
             </div>
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center ">
+              <Link to={"/card"}>
                 <img src="home-cate-10.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Technology</p>
             </div>
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center">
+              <Link to={"/card"}>
                 <img src="home-cate-11.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Kitchen</p>
             </div>
-            <div className="col-2 home-cate text-center mt-4">
-              <Link to="">
+            <div className="col-sm-6 mt-sm-5 col-md-4 col-lg-3 col-xl-2 col-xxl-2 col-2 home-cate text-center">
+              <Link to={"/card"}>
                 <img src="home-cate-12.avif" alt="" className="img-fluid" />
               </Link>
               <p className="pt-3">Outdoor</p>
@@ -137,8 +138,8 @@ function Homepage() {
             </div>
           </div>
           <div className="row mt-2 p-0">
-            <div className="col-4 p-0">
-              <Link>
+            <div className="col-sm-12 col-md-6 col-lg-4 mt-lg-3 col-xl-4 col-xxl-4 col-4 p-0">
+              <Link to={"/card"}>
                 <img
                   src="home-brand-1.avif"
                   alt=""
@@ -147,8 +148,8 @@ function Homepage() {
                 />
               </Link>
             </div>
-            <div className="col-4 p-0">
-              <Link>
+            <div className="col-sm-12 mt-sm-3 col-md-6 col-lg-4 ps-lg-3 col-xl-4 col-xxl-4 ps-xxl-3 col-4 p-0">
+              <Link to={"/card"}>
                 <img
                   src="home-brand-2.avif"
                   alt=""
@@ -157,8 +158,8 @@ function Homepage() {
                 />
               </Link>
             </div>
-            <div className="col-4">
-              <Link>
+            <div className="col-sm-12 mt-sm-3 col-md-6 col-lg-4 col-xl-4 col-xxl-4  col-4 ">
+              <Link to={"/card"}>
                 <img
                   src="home-brand-3.avif"
                   alt=""
@@ -187,7 +188,15 @@ function Homepage() {
           <div className="row mt-5">
             <div className="col-12">
               <Accordion>
-                <Accordion.Item eventKey="0" style={{ borderLeft: "none",borderRight:"none",borderTop:"none",outline:"none"}}>
+                <Accordion.Item
+                  eventKey="0"
+                  style={{
+                    borderLeft: "none",
+                    borderRight: "none",
+                    borderTop: "none",
+                    outline: "none",
+                  }}
+                >
                   <Accordion.Header>
                     <p class="">
                       Brookstone.com Your Trusted Source for Premium Quality
