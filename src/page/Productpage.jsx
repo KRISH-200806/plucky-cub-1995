@@ -43,7 +43,7 @@ function Productpage() {
   const GetdataFromServer = () => {
     dispatch({ type: GET_DATA_REQUEST, payload: true });
     axios
-      .get("http://localhost:3000/product", {
+      .get(`${process.env.REACT_APP_BASEURL}/product`, {
         params: {
           category: search.getAll("category"),
           q: searchvalue,
@@ -117,12 +117,8 @@ function Productpage() {
               }}
             >
               <option value="">select</option>
-              <option value="asc" >
-                Lowest Price
-              </option>
-              <option value="desc" >
-                Highest Price
-              </option>
+              <option value="asc">Lowest Price</option>
+              <option value="desc">Highest Price</option>
             </select>
           </div>
         </div>
@@ -202,13 +198,10 @@ function Productpage() {
               <hr />
             </div>
           </div>
-          <div
-            className="col-sm-7 me-sm-5 ms-sm-0 col-md-7 col-lg-7 col-xl-7 col-xxl-7 col-7"
-            style={{ marginLeft: "35px" }}
-          >
+          <div className="col-sm-12 col-md-12 ms-md-0 col-lg-7 col-xl-7 col-xxl-7 col-7">
             <div className="product">
               {data.map((e) => (
-                <div key={e.id}>
+                <div key={e.id} className="m-sm-auto">
                   <Link
                     to={`/description/${e.id}`}
                     style={{ textDecoration: "none" }}

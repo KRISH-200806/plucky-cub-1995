@@ -6,11 +6,12 @@ import PrivateRoute from "./PrivateRoute";
 function Cartpage() {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [check, setcheck] = useState(false);
+  const [check, setCheck] = useState(false);
+
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/cartdata");
+        const res = await axios.get(`${process.env.REACT_APP_BASEURL}/cartdata`);
         setCart(res.data);
         setLoading(false);
       } catch (err) {
@@ -43,8 +44,6 @@ function Cartpage() {
     );
   };
 
-
-
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -61,8 +60,8 @@ function Cartpage() {
       <section className="mt-5">
         <div className="container">
           <div className="row">
-            <div className="col-9">
-              <div className="row">
+            <div className="col-lg-9 col-xl-9">
+              <div className="d-sm-none d-md-flex row">
                 <div className="col-3">
                   <p>Items</p>
                 </div>
@@ -81,51 +80,45 @@ function Cartpage() {
               </div>
               {cart.map((item) => (
                 <section key={item.id}>
-                  <div className="container d-flex mb-3">
-                    <div
-                      className="col-3"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        marginRight: "15px",
-                      }}
-                    >
-                      <img src={item.image} alt="" className="img-fluid" />
-                    </div>
-                    <div className="col-3" style={{ width: "340px" }}>
-                      <div>{item.title}</div>
-                      <div>${item.price}</div>
-                    </div>
-                    <div className="col-3">
-                      <div className="cart-value mt-0">
-                        <button
-                          className="w-25"
-                          onClick={() => decrementQuantity(item.id)}
-                        >
-                          -
-                        </button>
-                        <button className="w-25">{item.quantity}</button>
-                        <button
-                          className="w-25"
-                          onClick={() => incrementQuantity(item.id)}
-                        >
-                          +
-                        </button>
+                  <div className="container mb-3">
+                    <div className="row align-items-center">
+                      <div className="col-12 col-md-3">
+                        <img src={item.image} alt="" className="img-fluid" />
                       </div>
-                      <div className="mt-3"></div>
-                      <div className="mt-3">
-                        <span>
+                      <div className="col-12 col-md-3">
+                        <div>{item.title}</div>
+                        <div>${item.price}</div>
+                      </div>
+                      <div className="col-12 col-md-3">
+                        <div className="cart-value mt-2 mt-md-0">
+                          <button
+                            className="btn btn-outline-secondary me-2"
+                            onClick={() => decrementQuantity(item.id)}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{item.quantity}</span>
+                          <button
+                            className="btn btn-outline-secondary ms-2"
+                            onClick={() => incrementQuantity(item.id)}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <div className="mt-3 d-flex align-items-center">
                           <i className="bi bi-trash3"></i>
-                        </span>
-                        <button
-                          className="border-0 bg-light ps-3"
-                          onClick={() => removeItem(item.id)}
-                        >
-                          Delete
-                        </button>
+                          <button
+                            className="btn btn-link text-danger ms-2"
+                            onClick={() => removeItem(item.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <div className="col-12 col-md-3">
+                        ${item.price * item.quantity}
                       </div>
                     </div>
-                    <div className="col-3">${item.price * item.quantity}</div>
                   </div>
                   <div>
                     <hr />
@@ -133,19 +126,19 @@ function Cartpage() {
                 </section>
               ))}
             </div>
-            <div className="col-3">
+            <div className="col-lg-5 col-xl-3">
               <div className="card p-3">
                 <h5>Total: ${calculateTotal()}</h5>
-
-                <button onClick={() => setcheck(!check)}>
+                <button
+                  onClick={() => setCheck(!check)}
+                  className="btn btn-primary"
+                >
                   {check ? (
                     <PrivateRoute>
                       <Paymentpage totalpaymentprice={calculateTotal()} />
                     </PrivateRoute>
                   ) : (
-                    <button className="btn btn-primary">
-                      Proceed to Checkout
-                    </button>
+                    "Proceed to Checkout"
                   )}
                 </button>
               </div>

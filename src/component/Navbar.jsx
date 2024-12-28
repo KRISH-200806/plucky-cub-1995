@@ -9,16 +9,21 @@ function Navbar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const {searchfun}=useContext(searchContex)
+  const { searchfun } = useContext(searchContex);
+
   return (
     <div>
       <section>
         <div className="container-fluid">
           <div className="row">
-            <div className="carousel"></div>
+            <div className="carousel">
+              <marquee behavior="" direction="left" className="text-center pt-1 text-light">
+                The 2024 Holiday Gift Guide Is Here - SHOP NOW
+              </marquee>
+            </div>
           </div>
         </div>
-        <div className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
             <Link className="navbar-brand" to="/">
               <img src="logo.avif" alt="Logo" className="img-fluid logo" />
@@ -26,30 +31,61 @@ const {searchfun}=useContext(searchContex)
             <button
               className="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
               onClick={handleShow}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div
-              className="d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block"
-              id="navbarNav"
-            >
-              <div className="m-auto navbarSeach">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <div className="m-auto navbarSeach d-none d-lg-block">
                 <input
                   onChange={(e) => searchfun(e.target.value)}
                   type="text"
-                  className="ps-3 pt-2 pb-2 pe-5 w-100"
+                  className="form-control"
                   placeholder="Search"
                   name="q"
                 />
               </div>
+              <ul className="navbar-nav ms-auto align-items-center d-none d-lg-flex">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/auth">
+                    <i className="bi bi-person nav-menu-icon"></i>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/favorites">
+                    <i className="bi bi-heart nav-menu-icon"></i>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cart">
+                    <i className="bi bi-cart3 nav-icon"></i>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Dark />
+                </li>
+              </ul>
             </div>
-            <ul className="link navbar-nav ml-auto align-items-center d-sm-none d-md-none d-lg-flex d-xl-flex d-xxl-flex">
+          </div>
+        </nav>
+
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Navbar</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <div className="navbarSeach mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+                name="q"
+              />
+            </div>
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/auth">
                   <i className="bi bi-person nav-menu-icon"></i>
@@ -65,168 +101,77 @@ const {searchfun}=useContext(searchContex)
                   <i className="bi bi-cart3 nav-icon"></i>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Dark />
-              </li>
             </ul>
-
-            <Offcanvas show={show} onHide={handleClose}>
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Navbar</Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <div className="d-sm-block w-25" id="navbarNav">
-                  <div className="m-auto navbarSeach">
-                    <input
-                      type="text"
-                      className="ps-3 pt-2 pb-2 pe-5 w-50"
-                      placeholder="Search"
-                      name="q"
-                    />
-                  </div>
-                </div>
-                <ul className="navbar-nav flex-row ">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/auth">
-                      <i className="bi bi-person nav-menu-icon"></i>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/favorites">
-                      <i className="bi bi-heart nav-menu-icon"></i>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/cart"}>
-                      <i
-                        className="bi bi-cart3 nav-icon"
-                        onClick={handleShow}
-                      ></i>
-                    </Link>
-                  </li>
-                </ul>
-                <section>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-12 d-sm-block d-sm-inline-block d-md-block">
-                        <ul className="d-sm-block list-unstyled col-11 text-center mt-4">
-                          <li className="links-main">
-                            <a href=" " className="nav-link link-dark">
-                              NEW
-                            </a>
-                          </li>
-                          <li className="links-main">
-                            <a href=" " className="nav-link link-dark ">
-                              MESSAGE
-                            </a>
-                          </li>
-                          <li className="links-main">
-                            <a href=" " className="nav-link link-dark ">
-                              SLEEP
-                            </a>
-                          </li>
-                          <li>
-                            <a href="  " className="nav-link link-dark">
-                              WELLNESS
-                            </a>
-                          </li>
-                          <li>
-                            <a href=" " className="nav-link link-dark ">
-                              HOME
-                            </a>
-                          </li>
-                          <li>
-                            <a href=" " className="nav-link link-dark ">
-                              TECH
-                            </a>
-                          </li>
-                          <li>
-                            <a href=" " className="nav-link link-dark ">
-                              OUTDOOR
-                            </a>
-                          </li>
-                          <li>
-                            <a href=" " className="nav-link link-dark ">
-                              GIFTS
-                            </a>
-                          </li>
-                          <li>
-                            <a href=" " className="nav-link link-dark ">
-                              SALE
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </Offcanvas.Body>
-            </Offcanvas>
-          </div>
-        </div>
+            <section>
+              <div className="container">
+                <div className="row">.</div>
+              </div>
+            </section>
+          </Offcanvas.Body>
+        </Offcanvas>
       </section>
       <section className="nav">
         <div className="container">
           <div className="row mt-3">
-            <div className="col-12 d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block">
-              <ul className="d-flex  col-12 justify-content-center align-items-center list-unstyled">
+            <div className="col-12 d-none d-lg-block">
+              <ul className="d-flex justify-content-center align-items-center list-unstyled">
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark">
+                  <Link to=" " className="nav-link link-dark">
                     NEW
-                  </a>
+                  </Link>
                 </li>
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark ">
                     MESSAGE
-                  </a>
+                  </Link>
                   <div className="vice-link-main list_hov">
                     <div className="row">
                       <div className="col-6 d-flex text-dark">
                         <div className="nav-menu1">
-                          <ul className="">
+                          <ul>
                             <li>
-                              <a href="/card" className="h5">
+                              <Link to="/card" className="h5">
                                 All MESSAGE
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a href=" ">Face/Eye Massagers</a>
+                              <Link to=" ">Face/Eye Massagers</Link>
                             </li>
                             <li>
-                              <a href=" ">Hand Massagers</a>
+                              <Link to=" ">Hand Massagers</Link>
                             </li>
                             <li>
-                              <a href=" ">Intimate Massagers</a>
+                              <Link to=" ">Intimate Massagers</Link>
                             </li>
                             <li>
-                              <a href=" ">Massage Chairs</a>
+                              <Link to=" ">Massage Chairs</Link>
                             </li>
                             <li>
-                              <a href=" ">Massage Guns</a>
+                              <Link to=" ">Massage Guns</Link>
                             </li>
                             <li>
-                              <a href=" ">Neck and Back Massagers</a>
+                              <Link to=" ">Neck and Back Massagers</Link>
                             </li>
                             <li>
-                              <a href=" ">Foot Massagers</a>
+                              <Link to=" ">Foot Massagers</Link>
                             </li>
                           </ul>
                         </div>
                         <div className="nav-menu2">
                           <ul>
                             <li>
-                              <a href=" " className="h5">
+                              <Link to=" " className="h5">
                                 FEATURED
-                              </a>
+                              </Link>
                             </li>
                             <li>
-                              <a href=" ">Osaki Massage Chairs</a>
+                              <Link to=" ">Osaki Massage Chairs</Link>
                             </li>
                             <li>
-                              <a href=" ">Quzy Shoulder Massager</a>
+                              <Link to=" ">Quzy Shoulder Massager</Link>
                             </li>
                             <li>
-                              <a href=" ">REI Foot Massager</a>
+                              <Link to=" ">REI Foot Massager</Link>
                             </li>
                           </ul>
                         </div>
@@ -244,9 +189,9 @@ const {searchfun}=useContext(searchContex)
                   </div>
                 </li>
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark ">
                     SLEEP
-                  </a>
+                  </Link>
                   <div className="vice-link-main3">
                     <div className="row">
                       <div className="col-6">
@@ -254,9 +199,9 @@ const {searchfun}=useContext(searchContex)
                           <div className="col-6">
                             <ul className="pt-3">
                               <li>
-                                <a href=" " className="h4">
+                                <Link to=" " className="h4">
                                   ALL SLEEP
-                                </a>
+                                </Link>
                               </li>
                               <li>Alarm Clocks & Sound Machines</li>
                               <li>Bedding</li>
@@ -268,9 +213,9 @@ const {searchfun}=useContext(searchContex)
                           <div className="col-6">
                             <ul>
                               <li>
-                                <a href=" " className="h4">
+                                <Link to=" " className="h4">
                                   FEATURED
-                                </a>
+                                </Link>
                               </li>
                               <li>Loftie Digital Clock</li>
                               <li>Yana Sleep Pillow</li>
@@ -279,368 +224,264 @@ const {searchfun}=useContext(searchContex)
                         </div>
                       </div>
                       <div className="col-6">
+                        <img
+                          src="https://www.brookstone.com/cdn/shop/products/Pillar_-_with_box_750x.jpg?v=1684413672"
+                          alt=""
+                          className="img-fluid"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li className="links-main col-1">
+                  <Link to=" " className="nav-link link-dark">
+                    WELLNESS
+                  </Link>
+                  <div className="vice-link-main4">
+                    <div className="row">
+                      <div className="col-6">
                         <div className="row">
                           <div className="col-6">
                             <ul>
                               <li>
-                                <img
-                                  src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                                  width="300px"
-                                  height="300px"
-                                  alt=""
-                                />
+                                <Link to=" " className="h4">
+                                  All WELLNESS
+                                </Link>
                               </li>
-                              <li className="text-center">WEDDING BANDS</li>
+                              <li>Cosmetic Care</li>
+                              <li>Heating Pads</li>
+                              <li>Intimate Massagers</li>
+                              <li>Lighting</li>
+                              <li>Pain Relief</li>
+                              <li>Skin Care</li>
+                              <li>Face Mask</li>
                             </ul>
                           </div>
                           <div className="col-6">
                             <ul>
                               <li>
-                                <img
-                                  src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                                  width="300px"
-                                  height="300px"
-                                  alt=""
-                                />
+                                <Link to=" " className="h4">
+                                  FEATURED
+                                </Link>
                               </li>
-                              <li className="text-center">
-                                MOSS AGATE COLLECTION
-                              </li>
+                              <li>Serene House Diffusers</li>
+                              <li>Theraface Pro Facial</li>
                             </ul>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="links-main col-1">
-                  <a href="  " className="nav-link link-dark">
-                    WELLNESS
-                  </a>
-                  <div className="vice-link-main4">
-                    <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>ALL WELLNESS</li>
-                          <li>Cold & Heat Therapy</li>
-                          <li>Eye Care</li>
-                          <li>Fitness</li>
-                          <li>Hair Care</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
+                      <div className="col-6">
+                        <img
+                          src="https://www.brookstone.com/cdn/shop/products/Novo_xt_UC-7900_thumbs_for_Collection__hover_option_UC-7900_Novo_XT_3_Crimson.jpg?v=1677880802"
+                          alt=""
+                          className="img-fluid"
+                        />
                       </div>
                     </div>
                   </div>
                 </li>
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark ">
                     HOME
-                  </a>
+                  </Link>
                   <div className="vice-link-main5">
                     <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>SHOP BY STYLE</li>
-                          <li>EVERY DAY CARRY (EDC)</li>
-                          <li>BARWARE</li>
-                          <li>GROOMSMAN GIFTS</li>
-                          <li>SHOP ALL MANLY GIFTS</li>
-                        </ul>
+                      <div className="col-6">
+                        <div className="row">
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  All HOME
+                                </Link>
+                              </li>
+                              <li>Air Quality</li>
+                              <li>Entertainment</li>
+                              <li>Lighting</li>
+                              <li>Pet Care</li>
+                              <li>Security</li>
+                              <li>Smart Home</li>
+                              <li>Vacuum Cleaners</li>
+                              <li>Weighted Blankets</li>
+                            </ul>
+                          </div>
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  FEATURED
+                                </Link>
+                              </li>
+                              <li>Canary Security Cameras</li>
+                              <li>Orbit Weighted Blanket</li>
+                              <li>Pet Life Smart Pet Door</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">MOSS AGATE COLLECTION</li>
-                        </ul>
+                      <div className="col-6">
+                        <img
+                          src="https://www.brookstone.com/cdn/shop/products/CanaryPro4_750x.jpg?v=1684413661"
+                          alt=""
+                          className="img-fluid"
+                        />
                       </div>
                     </div>
                   </div>
                 </li>
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark">
                     TECH
-                  </a>
+                  </Link>
                   <div className="vice-link-main6">
                     <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>SHOP BY STYLE</li>
-                          <li>EVERY DAY CARRY (EDC)</li>
-                          <li>BARWARE</li>
-                          <li>GROOMSMAN GIFTS</li>
-                          <li>SHOP ALL MANLY GIFTS</li>
-                        </ul>
+                      <div className="col-6">
+                        <div className="row">
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  All TECH
+                                </Link>
+                              </li>
+                              <li>Headphones</li>
+                              <li>Phone Chargers</li>
+                              <li>Smart Home</li>
+                              <li>Speakers</li>
+                              <li>Tech Toys</li>
+                              <li>Gadgets</li>
+                            </ul>
+                          </div>
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  FEATURED
+                                </Link>
+                              </li>
+                              <li>Gadget Discovery Club</li>
+                              <li>Pet Life Smart Pet Door</li>
+                              <li>Urbanista Headphones</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">MOSS AGATE COLLECTION</li>
-                        </ul>
+                      <div className="col-6">
+                        <img
+                          src="https://www.brookstone.com/cdn/shop/products/61evPR6vXDL._AC_SL1500__750x.jpg?v=1684413672"
+                          alt=""
+                          className="img-fluid"
+                        />
                       </div>
                     </div>
                   </div>
                 </li>
                 <li className="links-main">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark">
                     OUTDOOR
-                  </a>
+                  </Link>
                   <div className="vice-link-main7">
                     <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>SHOP BY STYLE</li>
-                          <li>EVERY DAY CARRY (EDC)</li>
-                          <li>BARWARE</li>
-                          <li>GROOMSMAN GIFTS</li>
-                          <li>SHOP ALL MANLY GIFTS</li>
-                        </ul>
+                      <div className="col-6">
+                        <div className="row">
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  All OUTDOOR
+                                </Link>
+                              </li>
+                              <li>Backyard Fun</li>
+                              <li>BBQ</li>
+                              <li>Fire Pits</li>
+                              <li>Garden Gadgets</li>
+                              <li>Grilling</li>
+                              <li>Outdoor Games</li>
+                              <li>Outdoor Speakers</li>
+                            </ul>
+                          </div>
+                          <div className="col-6">
+                            <ul>
+                              <li>
+                                <Link to=" " className="h4">
+                                  FEATURED
+                                </Link>
+                              </li>
+                              <li>GeoToy's Giant Inflatable Dome</li>
+                              <li>Ooni Pizza Ovens</li>
+                              <li>Solo Stove</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">MOSS AGATE COLLECTION</li>
-                        </ul>
+                      <div className="col-6">
+                        <img
+                          src="https://www.brookstone.com/cdn/shop/products/362d259b_a703_4c8a_8b9a_b83d97a8f30b_1296x.jpg?v=1679412525"
+                          alt=""
+                          className="img-fluid"
+                        />
                       </div>
                     </div>
                   </div>
                 </li>
                 <li className="links-main col-1">
-                  <a href=" " className="nav-link link-dark ">
+                  <Link to=" " className="nav-link link-dark">
                     GIFTS
-                  </a>
-                  <div className="vice-link-main8">
-                    <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>SHOP BY STYLE</li>
-                          <li>EVERY DAY CARRY (EDC)</li>
-                          <li>BARWARE</li>
-                          <li>GROOMSMAN GIFTS</li>
-                          <li>SHOP ALL MANLY GIFTS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">MOSS AGATE COLLECTION</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  </Link>
                 </li>
-                <li className="col-1">
-                  <a href=" " className="nav-link link-dark ">
+                <li className="links-main col-1">
+                  <Link to=" " className="nav-link link-dark">
                     SALE
-                  </a>
-                  <div className="vice-link-main3">
-                    <div className="row">
-                      <div className="col-3">
-                        <ul className="pt-3">
-                          <li>SHOP BY STYLE</li>
-                          <li>EVERY DAY CARRY (EDC)</li>
-                          <li>BARWARE</li>
-                          <li>GROOMSMAN GIFTS</li>
-                          <li>SHOP ALL MANLY GIFTS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/uPMl8PHCTTPoxZBnFtji6mat2PYwf06vijUe7xn7.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center ">ENGAGEMENT RINGS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/8krTfs9yDOGMMhKy36d3oisGlzu0GFRWIsWnPK6p.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">WEDDING BANDS</li>
-                        </ul>
-                      </div>
-                      <div className="col-3">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.flastpick.com/img/manly-bands/Sw6TkY47Oj5r6ZNmCuzzJCl2rXJ3EyrtFr71lUv5.jpg?h2mWidth=1080&h2mHeight=1080"
-                              width="300px"
-                              height="300px"
-                              alt=""
-                            />
-                          </li>
-                          <li className="text-center">MOSS AGATE COLLECTION</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="d-lg-none">
+              <ul className="list-unstyled">
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    NEW
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    MESSAGE
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    SLEEP
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    WELLNESS
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    HOME
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    TECH
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    OUTDOOR
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    GIFTS
+                  </Link>
+                </li>
+                <li className="links-main">
+                  <Link to=" " className="nav-link link-dark">
+                    SALE
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -650,20 +491,5 @@ const {searchfun}=useContext(searchContex)
     </div>
   );
 }
-export default Navbar;
 
-//  <div className="d-sm-block d-lg-flex d-xl-flex row d-xxl-flex">
-//    <div className="col-sm-2 d-sm-flex d-lg-block col-2">
-//      {data.image && data.image[0] && (
-//        <img src={data.image[0]} alt="" className="img-fluid mt-4" />
-//      )}
-//      {data.image && data.image[1] && (
-//        <img src={data.image[1]} alt="" className="img-fluid mt-4" />
-//      )}
-//    </div>
-//    <div className="col-sm-12 mt-sm-3 col-lg-10 col-xl-10 col-xxl-10 col-10 ps-0">
-//      {data.image && data.image[2] && (
-//        <img src={data.image[2]} alt="" className="img-fluid mt-4" />
-//      )}
-//    </div>
-//  </div>;
+export default Navbar;

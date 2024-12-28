@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Descriptionpage() {
   const { id } = useParams();
@@ -9,72 +10,47 @@ function Descriptionpage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/product/${id}`)
+      .get(`${process.env.REACT_APP_BASEURL}/product/${id}`)
       .then((response) => {
         console.log(response.data);
-         setdata(response.data);
+        setdata(response.data);
       })
       .catch((error) => console.error("Error fetching product:", error));
-  }, [ id]);
-
+  }, [id]);
 
   const addToCardFunction = () => {
     axios
-      .post("http://localhost:3000/cartdata",data)
+      .post(`${process.env.REACT_APP_BASEURL}/cartdata`, data)
       .then((res) => {
         console.log(res);
-        alert("data added succesfully")
+        alert("data added successfully");
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   return (
     <div>
       <section>
         <div className="container mt-5">
-          <div className="d-sm-block d-lg-flex d-xl-flex d-xxl-flex row desck">
-            <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 col-8">
-              <div className="d-sm-block d-lg-flex d-xl-flex row d-xxl-flex">
-                <div className="col-sm-2 d-sm-flex d-lg-block col-2">
-                  {data.image && data.image[0] && (
-                    <img
-                      src={data.image[0]}
-                      alt=""
-                      className="img-fluid mt-4"
-                    />
-                  )}
-                  {data.image && data.image[1] && (
-                    <img
-                      src={data.image[1]}
-                      alt=""
-                      className="img-fluid mt-4"
-                    />
-                  )}
-                  {data.image && data.image[2] && (
-                    <img
-                      src={data.image[2]}
-                      alt=""
-                      className="img-fluid mt-4"
-                    />
-                  )}
-                  {data.image && data.image[3] && (
-                    <img
-                      src={data.image[3]}
-                      alt=""
-                      className="img-fluid mt-4"
-                    />
-                  )}
-                  {data.image && data.image[4] && (
-                    <img
-                      src={data.image[4]}
-                      alt=""
-                      className="img-fluid mt-4"
-                    />
-                  )}
+          <div className="row">
+            <div className="col-12 col-lg-8">
+              <div className="row">
+                <div className="col-2 d-flex flex-column">
+                  {data.image &&
+                    data.image
+                      .slice(0, 5)
+                      .map((img, index) => (
+                        <img
+                          key={index}
+                          src={img}
+                          alt=""
+                          className="img-fluid mt-4"
+                        />
+                      ))}
                 </div>
-                <div className="col-sm-12 mt-sm-3 col-lg-10 col-xl-10 col-xxl-10 col-10 ps-0">
+                <div className="col-10 col-lg-9 ps-0">
                   {data.image && data.image[0] && (
                     <img
                       src={data.image[0]}
@@ -85,10 +61,10 @@ function Descriptionpage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-12 mt-sm-5 col-md-12 col-lg-4 col-xl-4 col-xxl-4 col-4">
-              <div className="desc-heding">
+            <div className="col-12 col-lg-4 mt-5 mt-lg-0">
+              <div className="desc-heading">
                 <p>
-                  <span>{data.heding}</span>
+                  <span>{data.heading}</span>
                 </p>
               </div>
               <div className="desc-title">
@@ -99,11 +75,11 @@ function Descriptionpage() {
                   <span>${data.price}</span>
                 </h5>
               </div>
-              
               <div className="desc-button">
                 <Link to={"/cart"}>
-                  {" "}
-                  <button className="button" onClick={addToCardFunction}>Add To Cart</button>
+                  <button className="button" onClick={addToCardFunction}>
+                    Add To Cart
+                  </button>
                 </Link>
               </div>
             </div>
@@ -113,12 +89,12 @@ function Descriptionpage() {
       <section>
         <div className="container mt-5">
           <div className="row">
-            <h4>description</h4>
+            <h4>Description</h4>
             <div>
               <hr />
             </div>
             <div>
-              <p></p>
+              <p>{data.description}</p>
             </div>
           </div>
         </div>
